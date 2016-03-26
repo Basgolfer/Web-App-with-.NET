@@ -32,7 +32,7 @@ public partial class Account_Login : Page
                 }
                 else
                 {
-                    FailureText.Text = "Invalid username or password.";
+                    FailureText.Text = "Invalid email or password.";
                     ErrorMessage.Visible = true;
                 }
             }

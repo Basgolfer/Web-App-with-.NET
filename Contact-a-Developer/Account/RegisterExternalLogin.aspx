@@ -14,11 +14,11 @@
             </p>
 
             <div class="form-group">
-                <asp:Label runat="server" AssociatedControlID="userName" CssClass="col-md-2 control-label">User name</asp:Label>
+                <asp:Label runat="server" AssociatedControlID="userName" CssClass="col-md-2 control-label">Email</asp:Label>
                 <div class="col-md-10">
                     <asp:TextBox runat="server" ID="userName" CssClass="form-control" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="userName"
-                        Display="Dynamic" CssClass="text-danger" ErrorMessage="User name is required" />
+                        Display="Dynamic" CssClass="text-danger" ErrorMessage="Email is required" />
                     <asp:ModelErrorMessage runat="server" ModelStateKey="UserName" CssClass="text-danger" />
                 </div>
             </div>
