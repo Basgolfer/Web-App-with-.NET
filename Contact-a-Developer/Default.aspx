@@ -9,7 +9,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h2>Log in</h2>
             <p>
                 If you have a developer account, click here to log in.</p>
@@ -17,9 +17,7 @@
                 <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301948">Log in &raquo;</a>
             </p>
         </div>
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <h2>Create a Developer Account</h2>
             <p>
                 Register as a developer here.</p>
