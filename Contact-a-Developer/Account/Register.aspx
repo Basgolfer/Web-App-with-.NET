@@ -61,10 +61,21 @@
             </div>
         </div>
         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="rblRole" CssClass="col-md-2 control-label">User Role</asp:Label>
+            <div class="col-md-10">
+                <asp:RadioButtonList ID="rblRole" runat="server" CssClass="radio">
+                    <asp:ListItem>Client</asp:ListItem>
+                    <asp:ListItem>Developer</asp:ListItem>
+                </asp:RadioButtonList>
+                <asp:RequiredFieldValidator ID="RoleValidator" runat="server" ErrorMessage="User role is required." ControlToValidate="rblRole" Display="Dynamic" CssClass="text-danger"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
         </div>
+        
     </div>
 </asp:Content>
 

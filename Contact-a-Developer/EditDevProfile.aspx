@@ -39,6 +39,11 @@
                 <asp:TextBox runat="server" ID="PrevSites" CssClass="form-control" />
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                <asp:Button ID="Button1" runat="server" Text="Submit" CssClass="btn btn-default" />
+            </div>
+        </div>
     </div>
 </asp:Content>
 
