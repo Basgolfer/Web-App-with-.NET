@@ -5,7 +5,7 @@
     <div class="jumbotron">
         <h1>Contact-a-Developer</h1>
         <p class="lead">Bringing together people with the ideas for sites with those who can make them happen.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Submit a request &raquo;</a></p>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Web Request]"></asp:SqlDataSource>
     </div>
 
     <div class="row">
