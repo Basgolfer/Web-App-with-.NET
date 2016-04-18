@@ -10,6 +10,10 @@ namespace Contact_a_Developer
     // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public byte IsDeveloper { get; set; }
+         
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

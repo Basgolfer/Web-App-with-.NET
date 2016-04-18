@@ -5,7 +5,9 @@
     <div class="jumbotron">
         <h1>Contact-a-Developer</h1>
         <p class="lead">Bringing together people with the ideas for sites with those who can make them happen.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Submit a request &raquo;</a></p>
+        <p class="lead">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [__MigrationHistory]"></asp:SqlDataSource>
+        </p>
     </div>
 
     <div class="row">
