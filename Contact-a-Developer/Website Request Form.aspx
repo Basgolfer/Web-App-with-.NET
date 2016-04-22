@@ -6,9 +6,9 @@
 <head runat="server">
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="Content/bootstrap.min.css"/>
-  <link rel="stylesheet" href="Content/bootstrap.css"/>
-  <link rel="stylesheet" href="Content/Site.css"/>
+  <link rel="stylesheet" href="Content2/bootstrap.min.css"/>
+  <link rel="stylesheet" href="Content2/bootstrap.css"/>
+  <link rel="stylesheet" href="Content2/Site.css"/>
 
 
 

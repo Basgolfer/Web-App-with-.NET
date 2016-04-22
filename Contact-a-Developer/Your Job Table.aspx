@@ -31,241 +31,29 @@
                 </div>
             </div>
                   <div class="pcw-wrap">
-                      <table class="table table-hover tr-header">
-                        <thead>
-
-                        <tr class="">
-                          <th>
-                              <a>First Name</a>
-                          </th>
-                          <th>
-                              <a>Last Name</a>
-                          </th>
-                          <th>
-                              <a>Email</a>
-                          </th>
-                          <th>
-                              <a>Phone</a>
-                          </th>
-                          <th>
-                              <a>Address</a>
-                          </th>
-                          <th>
-                              <a>City</a>
-                          </th>
-                          <th>
-                              <a>State</a>
-                          </th>
-                          <th>
-                              <a>Zip Code</a>
-                          </th>
-                        <th>
-                        </th>
-                        <th>
-                        </th>
-                        <th>
-
-                        </th>
-                        </tr>
-
-                      </thead>
-
-                      <tbody>
-
-
-                        <tr>
-                          <td>
-                          First Name
-                          </td>
-                          <td>
-                           Last Name
-                          </td>
-                          <td>
-                            Email
-                          </td>
-                          <td>
-                           Phone
-                          </td>
-                          <td>
-                            Address
-                          </td>
-                          <td>
-                           City
-                          </td>
-                          <td>
-                            State
-                          </td>
-                          <td>
-                           Zip Code
-                          </td>
-                          <td>
-                          </td>
-                          <td>
-                          </td>
-
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs">View Request</a>
-                          </td>
-                        </tr>
-                                                  <tr>
-                          <td>
-                          First Name
-                          </td>
-                          <td>
-                           Last Name
-                          </td>
-                          <td>
-                            Email
-                          </td>
-                          <td>
-                           Phone
-                          </td>
-                          <td>
-                            Address
-                          </td>
-                          <td>
-                           City
-                          </td>
-                          <td>
-                            State
-                          </td>
-                          <td>
-                           Zip Code
-                          </td>
-                          <td>
-                          </td>
-                          <td>
-                          </td>
-
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs">View Request</a>
-                          </td>
-                        </tr>
-                                                  <tr>
-                          <td>
-                          First Name
-                          </td>
-                          <td>
-                           Last Name
-                          </td>
-                          <td>
-                            Email
-                          </td>
-                          <td>
-                           Phone
-                          </td>
-                          <td>
-                            Address
-                          </td>
-                          <td>
-                           City
-                          </td>
-                          <td>
-                            State
-                          </td>
-                          <td>
-                           Zip Code
-                          </td>
-                          <td>
-                          </td>
-                          <td>
-                          </td>
-
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs">View Request</a>
-                          </td>
-                        </tr>
-                                                  <tr>
-                          <td>
-                          First Name
-                          </td>
-                          <td>
-                           Last Name
-                          </td>
-                          <td>
-                            Email
-                          </td>
-                          <td>
-                           Phone
-                          </td>
-                          <td>
-                            Address
-                          </td>
-                          <td>
-                           City
-                          </td>
-                          <td>
-                            State
-                          </td>
-                          <td>
-                           Zip Code
-                          </td>
-                          <td>
-                          </td>
-                          <td>
-                          </td>
-
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs">View Request</a>
-                          </td>
-                        </tr>
-                                                  <tr>
-                          <td>
-                          First Name
-                          </td>
-                          <td>
-                           Last Name
-                          </td>
-                          <td>
-                            Email
-                          </td>
-                          <td>
-                           Phone
-                          </td>
-                          <td>
-                            Address
-                          </td>
-                          <td>
-                           City
-                          </td>
-                          <td>
-                            State
-                          </td>
-                          <td>
-                           Zip Code
-                          </td>
-                          <td>
-                          </td>
-                          <td>
-                          </td>
-
-                          <td>
-                            <a href="#" class="btn btn-primary btn-xs">View Request</a>
-                          </td>
-                        </tr>
-
-                      </tbody>
-                        <!-- replace with php foreach -->
-                      </table>
-                                            <nav>
-                        <ul class="pagination">
-                          <li>
-                            <a href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li>
-                            <a href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
-                        </ul>
-                      </nav>
+                     
+                <asp:GridView ID="grdYourJobTable" runat="server" 
+                            AutoGenerateColumns="False" DataKeyNames="CategoryID" 
+                            AllowPaging="True"
+                            AllowSorting="True" CellPadding="4" ForeColor="Black" GridLines="None">
+                                 <Columns>
+                                    <asp:BoundField DataField="" HeaderText="First Name" ReadOnly="True" SortExpression="CategoryID"></asp:BoundField>                                
+                                    <asp:BoundField DataField="" HeaderText="Last Name" SortExpression="ShortName"></asp:BoundField>                                   
+                                    <asp:BoundField DataField="" HeaderText="Email" SortExpression="LongName" />
+                                    <asp:BoundField DataField="" HeaderText="Phone" SortExpression="LongName" />
+                                    <asp:BoundField DataField="" HeaderText="Address" SortExpression="LongName" />
+                                    <asp:BoundField DataField="" HeaderText="City" SortExpression="LongName" />
+                                    <asp:BoundField DataField="" HeaderText="State" SortExpression="LongName" />
+                                    <asp:BoundField DataField="" HeaderText="Zip Code" SortExpression="LongName" />
+                                    <asp:CommandField ButtonType="Button" CausesValidation="false" ShowEditButton="true"  />
+                                    <asp:CommandField ButtonType="Button" CausesValidation="false" ShowDeleteButton="true" />
+                                </Columns>
+                            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+                            <RowStyle BackColor="White" ForeColor="Black" />
+                            <AlternatingRowStyle BackColor="#E3EAEB" ForeColor="Black" />
+                            <PagerStyle BackColor="Gray" ForeColor="White" HorizontalAlign="Center" Font-Bold="True" />
+                            <PagerSettings Mode="NumericFirstLast" />                        
+                      </asp:GridView>
 
                   </div>
                 </div> <!--- end of class panel --->
