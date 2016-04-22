@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="NewReview.aspx.cs" Inherits="Reviews" %>
+﻿<%@ Page Title="Submit a review" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="NewReview.aspx.cs" Inherits="Reviews" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <p><h1>Write a new review for <asp:Label ID="Label1" runat="server" Text="Dev_FirstName"></asp:Label></h1></p>

@@ -1,7 +1,8 @@
-﻿<%@ Page Title="Inbox" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Inbox.aspx.cs" Inherits="Inbox" %>
+﻿<%@ Page Title="Sent Messages" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Sentbox.aspx.cs" Inherits="Sentbox" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <h1>Inbox</h1>
+    <% Session["UserID"] = HttpContext.Current.User.Identity.GetUserId(); %>
+    <h1>Sent Messages</h1>
     <div class="row">
         <div class="col-md-2"><div class="glyphicon glyphicon-inbox"></div><a href="Inbox.aspx"> &nbsp;Inbox</a>
             <br /><div class="glyphicon glyphicon-upload"></div><a href="Sentbox.aspx"> &nbsp;Sent Messages</a></div>
@@ -20,9 +21,9 @@
         </div>
     </div>
     
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Messages.MessageID, AspNetUsers.FirstName, Messages.Time, Messages.Title, Messages.Message, Messages.IsRead FROM Messages INNER JOIN AspNetUsers ON Messages.Sender = AspNetUsers.Id WHERE (Messages.Recipient = @Recipient)">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT Messages.MessageID, AspNetUsers.FirstName, Messages.Time, Messages.Title, Messages.Message, Messages.IsRead FROM Messages INNER JOIN AspNetUsers ON Messages.Sender = AspNetUsers.Id WHERE (Messages.Sender = @Sender)">
         <SelectParameters>
-            <asp:SessionParameter Name="Recipient" SessionField="UserID" Type="String" />
+            <asp:SessionParameter Name="Sender" SessionField="UserID" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
 </asp:Content>
