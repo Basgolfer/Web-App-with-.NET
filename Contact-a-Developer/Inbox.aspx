@@ -9,7 +9,7 @@
             <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="MessageID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="MessageID" HeaderText="MessageID" SortExpression="MessageID" ReadOnly="True" />
-            <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
+            <asp:BoundField DataField="FirstName" HeaderText="From" SortExpression="FirstName" />
             <asp:BoundField DataField="Time" HeaderText="Time" SortExpression="Time" />
             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
             <asp:BoundField DataField="Message" HeaderText="Message" SortExpression="Message" />
@@ -25,5 +25,6 @@
             <asp:SessionParameter Name="Recipient" SessionField="UserID" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </asp:Content>
 

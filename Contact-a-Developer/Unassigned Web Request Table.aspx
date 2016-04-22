@@ -28,24 +28,23 @@
                   </div><!-- /.col-lg-6 -->
                 </div>
             </div>
+                  <div class="row">
+                  <div class="col-md-6">
                   <div class="pcw-wrap">
                     
 
                        <asp:GridView ID="grdUnassignedWebRequest" runat="server" 
-                            AutoGenerateColumns="False" DataKeyNames="CategoryID" 
+                            AutoGenerateColumns="False" 
                             AllowPaging="True"
-                            AllowSorting="True" CellPadding="4" ForeColor="Black" GridLines="None">
+                            AllowSorting="True" CellPadding="4" ForeColor="Black" DataSourceID="SqlDataSource1" DataKeyNames="ID">
                                  <Columns>
-                                    <asp:BoundField DataField="" HeaderText="First Name" ReadOnly="True" SortExpression="CategoryID"></asp:BoundField>                                
-                                    <asp:BoundField DataField="" HeaderText="Last Name" SortExpression="ShortName"></asp:BoundField>                                   
-                                    <asp:BoundField DataField="" HeaderText="Email" SortExpression="LongName" />
-                                    <asp:BoundField DataField="" HeaderText="Phone" SortExpression="LongName" />
-                                    <asp:BoundField DataField="" HeaderText="Address" SortExpression="LongName" />
-                                    <asp:BoundField DataField="" HeaderText="City" SortExpression="LongName" />
-                                    <asp:BoundField DataField="" HeaderText="State" SortExpression="LongName" />
-                                    <asp:BoundField DataField="" HeaderText="Zip Code" SortExpression="LongName" />
-                                    <asp:CommandField ButtonType="Button" CausesValidation="false" ShowEditButton="true"  />
-                                    <asp:CommandField ButtonType="Button" CausesValidation="false" ShowDeleteButton="true" />
+                                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID"></asp:BoundField> 
+                                    <asp:BoundField DataField="JobName" HeaderText="JobName" SortExpression="JobName"></asp:BoundField>                                
+                                    <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName"></asp:BoundField>                                   
+                                    <asp:BoundField DataField="MobileFriendly" HeaderText="MobileFriendly" SortExpression="MobileFriendly" />
+                                    <asp:BoundField DataField="Anumation" HeaderText="Anumation" SortExpression="Anumation" />
+                                    <asp:BoundField DataField="DynamicWebPages" HeaderText="DynamicWebPages" SortExpression="DynamicWebPages" />
+                                     <asp:CommandField ShowSelectButton="True" />
                                 </Columns>
                             <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
                             <RowStyle BackColor="White" ForeColor="Black" />
@@ -54,6 +53,41 @@
                             <PagerSettings Mode="NumericFirstLast" />                        
                       </asp:GridView>
 
+
+                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [WebRequest].[ID], [JobName], [FirstName], [MobileFriendly], [Anumation], [DynamicWebPages] FROM [WebRequest] INNER JOIN [AspNetUsers] ON [WebRequest].[ClientID] = [AspNetUsers].[Id]  WHERE ([DevID] IS NULL)">
+                           
+                       </asp:SqlDataSource>
+
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Description], [OtherWebsites] FROM [WebRequest] WHERE (WebRequest.[ID] = @ID)" 
+                                                                                                                                            UpdateCommand="UPDATE [WebRequest] SET [DevID] = @DeveloperID WHERE [ID] = @ID">
+                           <UpdateParameters>
+                               <asp:SessionParameter Name="DeveloperID" SessionField="UserID" Type="String" />
+                               <asp:ControlParameter ControlID="grdUnassignedWebRequest" Name="ID" PropertyName="SelectedValue" Type="Int32" /> 
+                           </UpdateParameters> 
+                          <SelectParameters>
+                              <asp:ControlParameter ControlID="grdUnassignedWebRequest" Name="ID" PropertyName="SelectedValue" Type="Int32" />                      
+                          </SelectParameters>
+                            
+                      </asp:SqlDataSource>
+                      </div>
+                      </div>
+                      <div class="col-md-4 col-md-offset-2">
+                      <div class="pcw-wrap">
+                      <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource2" Height="50px" Width="125px">
+                          <Fields>
+                              <asp:BoundField DataField="Description" ReadOnly="true" HeaderText="Description" SortExpression="Description" HeaderStyle-BackColor="#1C5E55" HeaderStyle-Font-Bold="True" HeaderStyle-ForeColor="White">
+<HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                              </asp:BoundField>
+                              <asp:BoundField DataField="OtherWebsites" ReadOnly="true" HeaderText="Other Websites" SortExpression="OtherWebsites" HeaderStyle-BackColor="#1C5E55" HeaderStyle-Font-Bold="True" HeaderStyle-ForeColor="White">
+<HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White"></HeaderStyle>
+                              </asp:BoundField>
+                              <asp:CommandField HeaderText="Select Job" ShowEditButton="True" ShowHeader="True" />
+                             
+                          </Fields>
+                      </asp:DetailsView>
+                          </div>
+                          </div>
+                          </div>
 
                   </div>
                 </div> <!--- end of class panel --->

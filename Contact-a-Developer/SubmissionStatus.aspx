@@ -1,25 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.master" CodeFile="Your Job Table.aspx.cs" Inherits="Your_Job_Table" %>
-
-
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SubmissionStatus.aspx.cs" Inherits="SubmissionStatus" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-
             <br />
             <div id="page-content-wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <label> Choose Table</label>
-            <select onchange="changePage(this.value)" class="form-control">
-                <option value="Your Job Table.aspx"> Your Job Table</option>
-                <option value="Unassigned Web Request Table.aspx"> Unassigned Web Request Table</option>
-            </select>
-                        <br />
-
                       <div class="panel panel-default">
             <div class="panel-heading">
-                <label>Your Job Table</label>
+                <label>Your Submissions</label>
                 <div class="row">
                   <div class="col-sm-offset-4 col-md-offset-6 col-lg-offset-7">
                     <div class="input-group">
@@ -40,7 +29,7 @@
                             AllowSorting="True"  CellPadding="4" ForeColor="Black" DataSourceID="SqlDataSource1" DataKeyNames="ID" OnSelectedIndexChanged="grdYourJobTable_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="JobName" HeaderText="Job Name" SortExpression="JobName" />
-                                <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                                <asp:BoundField DataField="FirstName" HeaderText="Associated Developer" SortExpression="FirstName" />
                                 <asp:BoundField DataField="MobileFriendly" HeaderText="Mobile Friendly" SortExpression="MobileFriendly" />
                                 <asp:BoundField DataField="Anumation" HeaderText="Animation" SortExpression="Anumation" />
                                 <asp:BoundField DataField="DynamicWebPages" HeaderText="Dynamic Web Pages" SortExpression="DynamicWebPages" />
@@ -52,9 +41,9 @@
                             <PagerStyle BackColor="Gray" ForeColor="White" HorizontalAlign="Center" Font-Bold="True" />
                             <PagerSettings Mode="NumericFirstLast" />                        
                       </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [WebRequest].[ID], [JobName], [FirstName], [MobileFriendly], [Anumation], [DynamicWebPages] FROM [WebRequest] INNER JOIN [AspNetUsers] ON [WebRequest].[ClientID] = [AspNetUsers].[Id]  WHERE ([DevID] = @DevID)" OnSelecting="SqlDataSource1_Selecting">
+                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [WebRequest].[ID], [JobName], [MobileFriendly], [Anumation], [DynamicWebPages], [FirstName] FROM [WebRequest] INNER JOIN [AspNetUsers] ON [WebRequest].[DevID] = [AspNetUsers].[Id]  WHERE ([ClientID] = @ClientID)" OnSelecting="SqlDataSource1_Selecting">
                            <SelectParameters>
-                                <asp:SessionParameter Name="DevID" SessionField="UserID" Type="String" />
+                                <asp:SessionParameter Name="ClientID" SessionField="UserID" Type="String" />
                            </SelectParameters>
                       </asp:SqlDataSource>
                       <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Description], [OtherWebsites] FROM [WebRequest] WHERE (WebRequest.[ID] = @ID)">
@@ -81,10 +70,5 @@
               </div> <!---- end of class "col-" --->
               </div> <!--- end of class "row" --->
             </div> <!--- end of container-fluid --->
-        </div> <!-- /#page-content-wrapper -->
-            </asp:Content>
-
-
-
-
+</asp:Content>
 
