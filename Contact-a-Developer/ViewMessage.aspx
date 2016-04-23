@@ -13,7 +13,14 @@
                 <asp:BoundField DataField="Message" HeaderText="Message" SortExpression="Message" />
             </Fields>
         </asp:DetailsView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [MessageID], [Recipient], [Sender], [Time], [Title], [Message] FROM [Messages] WHERE ([MessageID] = @MessageID)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>"
+             SelectCommand="    SELECT [MessageID], rec.Email AS Recipient, send.Email AS Sender, [Time], [Title], [Message] 
+                                FROM [Messages] 
+                                INNER JOIN  [AspNetUsers] as rec
+                                   ON rec.Id = Messages.Recipient
+                                INNER JOIN  [AspNetUsers] as send  
+                                   ON send.Id = Messages.Sender
+                                WHERE ([MessageID] = @MessageID)">
             <SelectParameters>
                 <asp:SessionParameter Name="MessageID" SessionField="MessageIDSession" Type="Int32" />
             </SelectParameters>

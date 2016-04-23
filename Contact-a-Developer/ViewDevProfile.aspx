@@ -8,7 +8,7 @@
 
     <div class="form-horizontal">
         <hr />
-        <asp:ValidationSummary runat="server" CssClass="text-danger" />
+        <asp:Label  ID="EmailLabel" runat="server" />
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="Overview" CssClass="col-md-2 control-label">Overview</asp:Label>
             <div class="col-md-10">
