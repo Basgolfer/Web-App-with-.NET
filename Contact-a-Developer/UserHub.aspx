@@ -21,6 +21,10 @@
                     <div class="col-md-3 col-md-offset-1"><div class="glyphicon glyphicon-list-alt"></div><a href="Unassigned Web Request Table.aspx">&nbsp;Unassigned Jobs</a></div>
                     <div class="col-md-3 col-md-offset-1"><div class="glyphicon glyphicon-list"></div><a href="Your Job Table.aspx">&nbsp;My jobs</a></div>
                 </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4"><div class="glyphicon glyphicon-pencil"></div><a href="EditDevProfile.aspx">Edit Your Developer Profile</a></div>
+                </div>
         </div>
     </asp:Panel>
     </asp:Content>

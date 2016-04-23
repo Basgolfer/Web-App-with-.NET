@@ -7,9 +7,9 @@
     }
 </script>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-<%
-    Session["UserID"] = HttpContext.Current.User.Identity.GetUserId();        
-%>
+    <%
+        Session["UserID"] = HttpContext.Current.User.Identity.GetUserId();
+    %>
     <div class="jumbotron">
         <h1>Contact-a-Developer</h1>
         <p class="lead">Bringing together people with the ideas for sites with those who can make them happen.</p>
@@ -22,7 +22,8 @@
         <div class="col-md-6">
             <h2>Log in</h2>
             <p>
-                If you have an account, click here to log in.</p>
+                If you have an account, click here to log in.
+            </p>
             <p>
                 <a class="btn btn-default" href="/Account/Login.aspx">Log in &raquo;</a>
             </p>
@@ -30,7 +31,8 @@
         <div class="col-md-6">
             <h2>Create an Account</h2>
             <p>
-                Register as a developer or client here.</p>
+                Register as a developer or client here.
+            </p>
             <p>
                 <a class="btn btn-default" href="/Account/Register.aspx">Register &raquo;</a>
             </p>
