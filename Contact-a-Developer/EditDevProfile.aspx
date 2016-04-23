@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="EditDevProfile.aspx.cs" Inherits="EditDevProfile" %>
+﻿<%@ Page Title="Edit Developer Profile" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="EditDevProfile.aspx.cs" Inherits="EditDevProfile" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
     <h2>Edit Developer Profile</h2>
@@ -34,8 +34,11 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-10 col-md-offset-2">
-                <asp:Button ID="Button1" runat="server" Text="Submit" CssClass="btn btn-default" OnClick="Button1_Click" />
+            <div class="col-md-4 col-md-offset-2">
+                <asp:Button ID="Button1" runat="server" Text="Save" CssClass="btn btn-default" OnClick="Button1_Click" />
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+                <asp:Button ID="Button2" runat="server" Text="Save and View" CssClass="btn btn-default" OnClick="button2_click" />
             </div>
         </div>
     </div>

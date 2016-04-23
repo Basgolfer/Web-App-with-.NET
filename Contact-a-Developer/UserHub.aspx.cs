@@ -24,6 +24,7 @@ public partial class UserHub : System.Web.UI.Page
         }
         //Hide client dash if developer, vice versa for client.
         Session["UserID"] = HttpContext.Current.User.Identity.GetUserId();
+        Session["viewOnly"] = false;
         string cs = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         SqlConnection connection = new SqlConnection(cs);
         connection.Open();

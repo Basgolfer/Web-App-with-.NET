@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="NewReview.aspx.cs" Inherits="Reviews" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="PastReviews.aspx.cs" Inherits="PastReviews" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <p><h1>Previous ratings for <asp:Label ID="Label1" runat="server" Text="Dev_FirstName"></asp:Label></h1></p>
+    <p><h1>Write a new review for this developer</h1></p>
     <br />
     <p><a href="NewReview.aspx">Submit a new rating for this user.</a></p>
     <div class="form-group"> 
@@ -18,11 +18,12 @@
             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
             <RowStyle BackColor="#EFF3FB" />
         </asp:DetailsView>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="TotalRatings" ForeColor="#333333" GridLines="None">
+        <br />
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataSourceID="TotalRatings" ForeColor="#333333" GridLines="None" DataKeyNames="ID">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Rating" HeaderText="Rating" SortExpression="Rating" />
-                <asp:BoundField DataField="Feedback" HeaderText="Feedback" SortExpression="Feedback" />
+                <asp:BoundField DataField="Feedback" HeaderText="Feedback" SortExpression="Feedback" /> 
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -36,8 +37,16 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
         <br />
-        <asp:SqlDataSource ID="TotalRatings" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Rating], [Feedback] FROM [Ratings]"></asp:SqlDataSource>
-        <asp:SqlDataSource ID="AverageRating" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT AVG(Rating) AS Average FROM Ratings"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="TotalRatings" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Ratings] WHERE ([DevID] = @DevID)">
+            <SelectParameters>
+                <asp:SessionParameter Name="DevID" SessionField="devID" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="AverageRating" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT AVG(Rating) AS Average FROM Ratings WHERE ([DevID] = @DevID)">
+            <SelectParameters>
+                <asp:SessionParameter Name="DevID" SessionField="devID" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
     </div>
 </asp:Content>

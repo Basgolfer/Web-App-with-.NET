@@ -20,4 +20,10 @@ public partial class SubmissionStatus : System.Web.UI.Page
     {
 
     }
+
+    protected void GoViewProfile(object sender, EventArgs e)
+    {
+        Session["devID"] = (sender as Button).CommandArgument;
+        Response.Redirect("~/ViewDevProfile.aspx");
+    }
 }

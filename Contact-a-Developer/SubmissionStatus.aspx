@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Your Requests" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SubmissionStatus.aspx.cs" Inherits="SubmissionStatus" %>
+﻿<%@ Page Title="Your Accepted Requests" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="SubmissionStatus.aspx.cs" Inherits="SubmissionStatus" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
             <br />
@@ -41,24 +41,33 @@
                             <PagerStyle BackColor="Gray" ForeColor="White" HorizontalAlign="Center" Font-Bold="True" />
                             <PagerSettings Mode="NumericFirstLast" />                        
                       </asp:GridView>
+
+
                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [WebRequest].[ID], [JobName], [MobileFriendly], [Anumation], [DynamicWebPages], [FirstName] FROM [WebRequest] INNER JOIN [AspNetUsers] ON [WebRequest].[DevID] = [AspNetUsers].[Id]  WHERE ([ClientID] = @ClientID)" OnSelecting="SqlDataSource1_Selecting">
                            <SelectParameters>
                                 <asp:SessionParameter Name="ClientID" SessionField="UserID" Type="String" />
                            </SelectParameters>
                       </asp:SqlDataSource>
-                      <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Description], [OtherWebsites] FROM [WebRequest] WHERE (WebRequest.[ID] = @ID)">
+                      <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Description], [OtherWebsites], [DevID] FROM [WebRequest] WHERE (WebRequest.[ID] = @ID)">
                           <SelectParameters>
                               <asp:ControlParameter ControlID="grdYourJobTable" Name="ID" PropertyName="SelectedValue" Type="Int32" />
                           </SelectParameters>
-                      </asp:SqlDataSource>
+                      </asp:SqlDataSource>                     
                       </div>
                       </div>
+
+
                       <div class="col-md-4 col-md-offset-2">
                       <div class="pcw-wrap">
                       <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="SqlDataSource2" Height="50px" Width="125px">
                           <Fields>
                               <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" HeaderStyle-BackColor="#1C5E55" HeaderStyle-Font-Bold="True" HeaderStyle-ForeColor="White"/>
                               <asp:BoundField DataField="OtherWebsites" HeaderText="Other Websites" SortExpression="OtherWebsites" HeaderStyle-BackColor="#1C5E55" HeaderStyle-Font-Bold="True" HeaderStyle-ForeColor="White"/>
+                              <asp:TemplateField AccessibleHeaderText="View Profile"  >
+                                  <ItemTemplate>
+                                      <asp:Button ID="NewButton" runat="server" Text="Dev Profile" OnClick="GoViewProfile" CommandArgument='<%# Bind("DevID") %>' />
+                                  </ItemTemplate>
+                              </asp:TemplateField>
                           </Fields>
                       </asp:DetailsView>
                       <br />

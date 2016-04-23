@@ -15,6 +15,13 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Init(object sender, EventArgs e)
     {
+
+
+
+        if (Session["theme"] == null) { Session["theme"] = "navbar navbar-default navbar-fixed-top"; }
+        mypanel.CssClass = Session["theme"].ToString();
+
+
         // The code below helps to protect against XSRF attacks
         var requestCookie = Request.Cookies[AntiXsrfTokenKey];
         Guid requestCookieGuidValue;
@@ -69,8 +76,25 @@ public partial class SiteMaster : MasterPage
 
     }
 
+
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
     {
         Context.GetOwinContext().Authentication.SignOut();
+    }
+
+    protected void btnTheme_Click(object sender, EventArgs e)
+    {
+        if (mypanel.CssClass == "navbar navbar-default navbar-fixed-top")
+        {
+            string theme = "navbar navbar-inverse navbar-fixed-top";
+            Session["theme"] = theme;
+        }
+        else
+        {
+            string theme = "navbar navbar-default navbar-fixed-top";
+            Session["theme"] = theme;
+        }
+        mypanel.CssClass = Session["theme"].ToString();
+
     }
 }

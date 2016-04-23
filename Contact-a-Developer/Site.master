@@ -65,7 +65,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <asp:Panel id="mypanel" runat="server" >
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -100,13 +100,13 @@
                     </asp:LoginView>
                 </div>
             </div>
-        </div>
+        </asp:Panel>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Contact a Developer</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Contact a Developer <asp:LinkButton ID="btnTheme" CausesValidation="false" runat="server" OnClick="btnTheme_Click">&nbsp;Change Theme</asp:LinkButton></p>
             </footer>
         </div>
     </form>
