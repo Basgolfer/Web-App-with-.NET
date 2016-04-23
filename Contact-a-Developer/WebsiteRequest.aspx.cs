@@ -109,12 +109,14 @@ public partial class WebsiteRequest : System.Web.UI.Page
         myCommand1.CommandType = System.Data.CommandType.Text;
 
         myCommand1.CommandText ="INSERT INTO [WebRequest] (JobName, ClientID, Description, " 
-            + "OtherWebsites, MobileFriendly, Anumation, DynamicWebPages) VALUES ('" + TextBox1.Text +
-            "', '" + clientID + "', '" + TextBox5.Text + "', '" + TextBox2.Text + "', " + MobileFriendly + ", " + 
+            + "OtherWebsites, MobileFriendly, Anumation, DynamicWebPages) VALUES (@jobname, '" + clientID + "', @description, @otherwebsites, " + MobileFriendly + ", " + 
             Animation + ", " + DynamicWebPages + ")" ;
-            int blah = myCommand1.ExecuteNonQuery();
-            Button1.Text = "Success!";
-            connection.Close();
-            Response.Redirect("~/UserHub.aspx");
+        myCommand1.Parameters.AddWithValue("@jobname", TextBox1.Text);
+        myCommand1.Parameters.AddWithValue("@description", TextBox5.Text);
+        myCommand1.Parameters.AddWithValue("@otherwebsites", TextBox2.Text);
+        int blah = myCommand1.ExecuteNonQuery();
+        Button1.Text = "Success!";
+        connection.Close();
+        Response.Redirect("~/UserHub.aspx");
     }
 }
